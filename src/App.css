@@ -1,0 +1,12 @@
+#root {
+  /* padding-left: 8rem;
+  padding-right: 8rem; */
+  width: 100%;
+}
+
+@media (max-width: 767px) { 
+  #root {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
