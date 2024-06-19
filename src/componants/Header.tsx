@@ -21,8 +21,8 @@ export const Header: React.FC = () => {
             <h1 className="flex-auto text-2xl font-bold tracking-tight leading-9 text-slate-800">JobHuntly</h1>
           </div>
           <div className="flex gap-4 justify-center items-start pt-6 text-base font-medium leading-6 text-slate-600">
-            <NavItem path="/find-jobs">Find Jobs</NavItem>
-            <NavItem path="/browse-companies">Browse Companies</NavItem>
+            <NavItem path={"/find-jobs"}>Find Jobs</NavItem>
+            <NavItem path={"/browse-companies"}>Browse Companies</NavItem>
           </div>
         </div>
         <div className="flex gap-4 justify-between py-3.5 pl-6 text-base font-bold leading-6 text-center">

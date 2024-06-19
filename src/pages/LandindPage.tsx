@@ -6,7 +6,6 @@ import { AdvertisementCard } from '../componants/AdvertisementCard';
 import FeaturedJobs from '../componants/FeaturedJobs';
 import LatestJobsOpen from '../componants/LatestJobs';
 import { useLocation } from 'react-router-dom';
-import FindJobsComponent from './FindJobs';
 
 
 
