@@ -253,17 +253,23 @@ const jobListings: JobListingProps[] = [
 ];
 
 const FindJobsComponent: React.FC = () => {
-
-
   const [employmentOpen, setEmploymentOpen] = React.useState(true);
   const [levelOpen, setLevelOpen] = React.useState(true);
   const [locationOpen, setLocationOpen] = React.useState(true);
   const [categoryOpen, setCategoryOpen] = React.useState(true);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const jobsPerPage = 10;
 
   const toggleEmployment = () => setEmploymentOpen(!employmentOpen);
   const toggleLevel = () => setLevelOpen(!levelOpen);
   const toggleLocation = () => setLocationOpen(!locationOpen);
   const toggleCategory = () => setCategoryOpen(!categoryOpen);
+
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = jobListings.slice(indexOfFirstJob, indexOfLastJob);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <div className="flex justify-center items-center px-16 py-20 bg-white max-md:px-5">
@@ -373,11 +379,10 @@ const FindJobsComponent: React.FC = () => {
           </aside>
           <main className="w-full max-w-[942px] max-md:w-full">
             <header>
-
               <section className="flex gap-5 justify-between w-full max-md:flex-wrap max-md:max-w-full">
                 <header className="flex flex-col">
                   <h1 className="text-3xl font-semibold leading-10 text-slate-800">All Jobs</h1>
-                  <p className="mt-1 text-base leading-6 text-slate-500">Showing 73 results</p>
+                  <p className="mt-1 text-base leading-6 text-slate-500">Showing {jobListings.length} results</p>
                 </header>
                 <div className="flex gap-5 justify-between my-auto">
                   <div className="flex gap-3 my-auto text-base leading-6">
@@ -401,7 +406,7 @@ const FindJobsComponent: React.FC = () => {
                 </div>
               </section>
             </header>
-            {jobListings.map((job, index) => (
+            {currentJobs.map((job, index) => (
               <JobListing
                 key={index}
                 companyLogo={job.companyLogo}
@@ -416,6 +421,34 @@ const FindJobsComponent: React.FC = () => {
                 capacity={job.capacity}
               />
             ))}
+
+            <nav className="flex gap-2 justify-center items-center self-center mt-8 text-base font-semibold leading-6 text-center whitespace-nowrap text-slate-600">
+              <button
+                className={"shrink-0 self-stretch my-auto w-6 aspect-square bg-transparent"}
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b89f3263bfb4296fd26391f61fbb6293e64bd40d536d9a2ed7a77cf1a0b30669?apiKey=946bf3455d5f470191c249fabc019131&" alt="Previous page" />
+              </button>
+              <div className="flex gap-0 self-stretch">
+                {[...Array(Math.ceil(jobListings.length / jobsPerPage))].map((_, index) => (
+                  <button
+                    key={index + 1}
+                    className={`justify-center px-3 py-2.5 rounded-lg ${currentPage === index + 1 ? "text-white bg-indigo-600" : ""}`}
+                    onClick={() => paginate(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
+              <button
+                className={"shrink-0 self-stretch my-auto w-6 aspect-square bg-transparent"}
+                onClick={() => paginate(currentPage + 1)}
+                disabled={currentPage === Math.ceil(jobListings.length / jobsPerPage)}
+              >
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/56b2a2f12435d011e0dccb8cde349d26b577d75303c27f4fd355bafcaeb59623?apiKey=946bf3455d5f470191c249fabc019131&" alt="Next page" />
+              </button>
+            </nav>
           </main>
         </div>
       </div>
