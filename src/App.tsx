@@ -4,23 +4,20 @@ import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import { Header } from './componants/Header';
 import { LandingPage } from './pages/LandindPage';
 import { Footer } from './componants/Footer';
+import FindJobsComponent from './pages/FindJobs';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
-        </Route>
+          <Route path="/find-jobs" element={<FindJobsComponent />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
 };
 
-const Layout: React.FC = () => {
-  return <Outlet />;
-};
 
 export default App;

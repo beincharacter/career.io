@@ -4,23 +4,42 @@ type CategoryCardProps = {
   imageUrl: string;
   title: string;
   jobsAvailable: number;
-  isFeatured?: boolean;
 };
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ imageUrl, title, jobsAvailable, isFeatured }) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ imageUrl, title, jobsAvailable }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <article
-      className={`flex flex-col grow p-8 mx-auto w-full ${isFeatured ? "bg-indigo-600 text-white" : "bg-white border border-solid border-zinc-200"} max-md:px-5 max-md:mt-8`}
+      className={`flex flex-col grow p-8 mx-auto w-full hover cursor-pointer ${
+        isHovered ? "text-white" : "bg-white border border-solid border-zinc-200"
+      } max-md:px-5 max-md:mt-8`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <img loading="lazy" src={imageUrl} alt={`${title} category icon`} className="w-12 aspect-square" />
-      <h3 className={`mt-8 text-2xl font-semibold leading-7 ${isFeatured ? "" : "text-slate-800"}`}>{title}</h3>
-      <div className={`flex gap-4 px-px mt-3 text-lg leading-7 ${isFeatured ? "" : "text-slate-500"}`}>
+      <h3 className={`mt-8 text-2xl font-semibold leading-7 ${isHovered ? "" : "text-slate-800"}`}>{title}</h3>
+      <div className={`flex gap-4 px-px mt-3 text-lg leading-7 ${isHovered ? "" : "text-slate-500"}`}>
         <span>{jobsAvailable} jobs available</span>
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1883c3f970080ef24d10fc7219940fa5e85397d2971645cdf958557da632f345?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="shrink-0 my-auto w-6 aspect-square" />
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/1883c3f970080ef24d10fc7219940fa5e85397d2971645cdf958557da632f345?apiKey=946bf3455d5f470191c249fabc019131&"
+          alt=""
+          className="shrink-0 my-auto w-6 aspect-square"
+        />
       </div>
     </article>
   );
 };
+
 
 const categories = [
   { imageUrl: 'https://cdn.builder.io/api/v1/image/assets/TEMP/a01abc145073fd5b65fb3d1dc58238840cbb658773f211d0d8d09af01de22d34?apiKey=946bf3455d5f470191c249fabc019131&', title: 'Design', jobsAvailable: 235 },
@@ -35,8 +54,8 @@ const categories = [
 
 export const ExploreCategory: React.FC = () => {
   return (
-    <div className="flex flex-col px-24 justify-end items-center pt-20 w-full bg-white max-md:px-5 max-md:max-w-full">
-      <section className="flex flex-col w-full max-md:max-w-full">
+    <section className="flex flex-col px-24 justify-end items-center pt-20 w-full bg-white max-md:px-5 max-md:max-w-full">
+      <div className="flex flex-col w-full max-w-[1192px] max-md:max-w-full">
         <header className="flex gap-2.5 justify-between w-full font-semibold max-md:flex-wrap max-md:max-w-full">
           <h1 className="text-5xl text-sky-400 leading-[52.8px] max-md:max-w-full max-md:text-4xl">
             Explore by <span className="text-sky-400">category</span>
@@ -46,18 +65,22 @@ export const ExploreCategory: React.FC = () => {
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/247d3677732c680ee4f270e0de17e72780a5526fa8c7aeefd90199d2c241fe60?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="shrink-0 self-start w-6 aspect-square" />
           </nav>
         </header>
-        <section className="flex mt-12 max-md:mt-10 max-md:max-w-full gap-8">
-          {categories.slice(0, 4).map((category, index) => (
-            <CategoryCard key={index} {...category} />
-          ))}
+        <section className="mt-12 max-md:mt-10 max-md:max-w-full">
+          <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+            {categories.slice(0, 4).map((category, index) => (
+              <CategoryCard key={index} {...category} />
+            ))}
+          </div>
         </section>
-        <section className="flex mt-8 max-md:max-w-full gap-8">
-          {categories.slice(4).map((category, index) => (
-            <CategoryCard key={index} {...category} />
-          ))}
+        <section className="mt-8 max-md:max-w-full">
+          <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+            {categories.slice(4).map((category, index) => (
+              <CategoryCard key={index} {...category} />
+            ))}
+          </div>
         </section>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
