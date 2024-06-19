@@ -236,6 +236,8 @@ const jobListings: JobListingProps[] = [
 ];
 
 const FindJobsComponent: React.FC = () => {
+
+
   const [employmentOpen, setEmploymentOpen] = React.useState(true);
   const [levelOpen, setLevelOpen] = React.useState(true);
   const [locationOpen, setLocationOpen] = React.useState(true);
@@ -246,187 +248,112 @@ const FindJobsComponent: React.FC = () => {
   const toggleLocation = () => setLocationOpen(!locationOpen);
   const toggleCategory = () => setCategoryOpen(!categoryOpen);
 
-
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const jobsPerPage = 10;
-  const totalPages = Math.ceil(jobListings.length / jobsPerPage);
-  const indexOfLastJob = currentPage * jobsPerPage;
-  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-  const currentJobs = jobListings.slice(indexOfFirstJob, indexOfLastJob);
-
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, pageNumber: number) => {
-    event.preventDefault();
-    setCurrentPage(pageNumber);
-  };
-
-  // Ref for the aside element
-  const asideRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const asideElement = asideRef.current;
-    if (!asideElement) return;
-
-    const handleScroll = () => {
-      const { top } = asideElement.getBoundingClientRect();
-      if (top <= 20) {  // Adjust this value as needed based on your design
-        asideElement.classList.add('sticky');
-      } else {
-        asideElement.classList.remove('sticky');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <div className="flex justify-center items-center px-16 py-20 bg-white max-md:px-5">
       <div className="w-full max-w-[1193px] max-md:max-w-full">
-        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-          <aside ref={asideRef} className="flex flex-col w-1/5 max-md:ml-0 max-md:w-full">
-            <section className="flex flex-col text-base leading-6 text-slate-600 max-md:mt-10">
-              <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleEmployment}>
-                <h2>Type of Employment</h2>
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
-              </header>
-              {employmentOpen && (
-                <>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Freelance</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Full Time</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Part Time</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Internship</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Temporary</p>
-                  </label>
-                </>
-              )}
-            </section>
-            <section className="flex flex-col mt-8 text-base leading-6 text-slate-600">
-              <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleLevel}>
-                <h2>Level</h2>
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
-              </header>
-              {levelOpen && (
-                <>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Entry</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Intermediate</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Senior</p>
-                  </label>
-                </>
-              )}
-            </section>
-            <section className="flex flex-col mt-8 text-base leading-6 text-slate-600">
-              <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleLocation}>
-                <h2>Location</h2>
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
-              </header>
-              {locationOpen && (
-                <>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Remote</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">In Office</p>
-                  </label>
-                </>
-              )}
-            </section>
-            <section className="flex flex-col mt-8 text-base leading-6 text-slate-600">
-              <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleCategory}>
-                <h2>Category</h2>
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
-              </header>
-              {categoryOpen && (
-                <>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Design</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Development</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Marketing</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Management</p>
-                  </label>
-                  <label className="flex items-center mt-5 gap-4">
-                    <input type="checkbox" />
-                    <p className="text-sm">Finance</p>
-                  </label>
-                </>
-              )}
-            </section>
-          </aside>
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0"><aside className="flex flex-col w-1/5 max-md:ml-0 max-md:w-full">
+      <section className="flex flex-col text-base leading-6 text-slate-600 max-md:mt-10">
+        <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleEmployment}>
+          <h2>Type of Employment</h2>
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
+        </header>
+        {employmentOpen && (
+          <>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Freelance</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Full Time</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Part Time</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Internship</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Temporary</p>
+            </label>
+          </>
+        )}
+      </section>
+      <section className="flex flex-col mt-8 text-base leading-6 text-slate-600">
+        <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleLevel}>
+          <h2>Level</h2>
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
+        </header>
+        {levelOpen && (
+          <>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Entry</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Intermediate</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Senior</p>
+            </label>
+          </>
+        )}
+      </section>
+      <section className="flex flex-col mt-8 text-base leading-6 text-slate-600">
+        <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleLocation}>
+          <h2>Location</h2>
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
+        </header>
+        {locationOpen && (
+          <>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Remote</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">In Office</p>
+            </label>
+          </>
+        )}
+      </section>
+      <section className="flex flex-col mt-8 text-base leading-6 text-slate-600">
+        <header className="flex gap-2 justify-between font-bold leading-[150%] text-slate-800 cursor-pointer" onClick={toggleCategory}>
+          <h2>Category</h2>
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1783c811bab5d5d70387c7477ce0eff6659e26ee841c6322bea54c6cb085945c?apiKey=946bf3455d5f470191c249fabc019131&" alt="Filter icon" className="shrink-0 my-auto w-5 aspect-square" />
+        </header>
+        {categoryOpen && (
+          <>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Design</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Development</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Marketing</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Management</p>
+            </label>
+            <label className="flex items-center mt-5 gap-4">
+              <input type="checkbox" />
+              <p className="text-sm">Finance</p>
+            </label>
+          </>
+        )}
+      </section>
+    </aside>
           <main className="w-full max-w-[942px] max-md:w-full">
-
-          <header className="flex flex-col grow justify-center max-md:mt-10 max-md:max-w-full">
-              <div className="flex gap-5 justify-between w-full max-md:flex-wrap max-md:max-w-full">
-                <div className="flex flex-col">
-                  <h2 className="text-3xl font-semibold leading-10 text-slate-800">All Jobs</h2>
-                  <p className="mt-1 text-base leading-6 text-slate-500">
-                    Showing {currentJobs.length} of {jobListings.length} results
-                  </p>
-                </div>
-                <div className="flex gap-5 justify-between my-auto">
-                  <div className="flex gap-3 my-auto text-base leading-6">
-                    <p className="text-right text-slate-500">Sort by:</p>
-                    <div className="flex gap-2 font-medium text-slate-800">
-                      <p>Most relevant</p>
-                      <img
-                        loading="lazy"
-                        src="http://b.io/ext_35-"
-                        alt="Sort icon"
-                        className="shrink-0 my-auto w-4 aspect-square"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <img
-                      loading="lazy"
-                      src="http://b.io/ext_36-"
-                      alt="Grid view"
-                      className="shrink-0 w-10 aspect-square"
-                    />
-                    <img
-                      loading="lazy"
-                      src="http://b.io/ext_37-"
-                      alt="List view"
-                      className="shrink-0 w-10 aspect-square"
-                    />
-                  </div>
-                </div>
-              </div>
-            </header>
             {jobListings.map((job, index) => (
               <JobListing
                 key={index}
