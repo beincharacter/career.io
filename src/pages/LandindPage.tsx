@@ -6,6 +6,7 @@ import { AdvertisementCard } from '../componants/AdvertisementCard';
 import FeaturedJobs from '../componants/FeaturedJobs';
 import LatestJobsOpen from '../componants/LatestJobs';
 import { useLocation } from 'react-router-dom';
+import RecommendedCompanies from './RecommendedCompanies';
 
 
 
@@ -18,6 +19,7 @@ export const LandingPage: React.FC = () => {
       <HeroHeader />
       {location.pathname === '/' && <Home />}
       {location.pathname === '/find-jobs' &&  <Home />}
+      {location.pathname === '/find-companies' &&  <RecommendedCompanies />}
       
     </div>
   );
