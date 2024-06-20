@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface JobListingProps {
   companyLogo: string;
@@ -30,6 +31,7 @@ const SortOption: React.FC<SortOptionProps> = ({ text }) => (
 );
 
 
+
 const JobListing: React.FC<JobListingProps> = ({
   companyLogo,
   jobTitle,
@@ -41,51 +43,58 @@ const JobListing: React.FC<JobListingProps> = ({
   applyUrl,
   appliedCount,
   capacity,
-}) => (
-  <article className="flex gap-5 justify-between p-6 mt-4 w-full bg-white border border-solid border-zinc-200 leading-[160%] max-md:flex-wrap max-md:px-5 max-md:max-w-full">
-    <div className="flex gap-5 justify-between font-semibold">
-      <img loading="lazy" src={companyLogo} alt={`${companyName} logo`} className="shrink-0 self-start w-16 aspect-square" />
-      <div className="flex flex-col">
-        <h3 className="text-xl leading-6 text-slate-800">{jobTitle}</h3>
-        <p className="flex gap-2 justify-between py-px mt-2 text-base text-slate-500">
-          <span>{companyName}</span>
-          <span>{location}</span>
-        </p>
-        <div className="flex gap-2 mt-2 text-sm whitespace-nowrap">
-          <span className="justify-center px-2.5 py-1.5 text-emerald-300 bg-emerald-300 bg-opacity-10 rounded-[80px]">
-            {employmentType}
-          </span>
-          <div className="shrink-0 w-px bg-zinc-200 h-[34px]" />
-          <span className="justify-center px-2.5 py-1.5 text-amber-400 border border-amber-400 border-solid rounded-[80px]">
-            {category}
-          </span>
-          {tags.map((tag, index) => (
-            <span key={index} className="justify-center px-2.5 py-1.5 text-indigo-600 border border-indigo-600 border-solid rounded-[80px]">
-              {tag}
+}) => {
+
+  const navigate = useNavigate();
+  
+  return  (
+    <article className="flex gap-5 justify-between p-6 mt-4 w-full bg-white border border-solid border-zinc-200 leading-[160%] max-md:flex-wrap max-md:px-5 max-md:max-w-full"
+      onClick={() => navigate("job-123456")}
+    >
+      <div className="flex gap-5 justify-between font-semibold">
+        <img loading="lazy" src={companyLogo} alt={`${companyName} logo`} className="shrink-0 self-start w-16 aspect-square" />
+        <div className="flex flex-col">
+          <h3 className="text-xl leading-6 text-slate-800">{jobTitle}</h3>
+          <p className="flex gap-2 justify-between py-px mt-2 text-base text-slate-500">
+            <span>{companyName}</span>
+            <span>{location}</span>
+          </p>
+          <div className="flex gap-2 mt-2 text-sm whitespace-nowrap">
+            <span className="justify-center px-2.5 py-1.5 text-emerald-300 bg-emerald-300 bg-opacity-10 rounded-[80px]">
+              {employmentType}
             </span>
-          ))}
+            <div className="shrink-0 w-px bg-zinc-200 h-[34px]" />
+            <span className="justify-center px-2.5 py-1.5 text-amber-400 border border-amber-400 border-solid rounded-[80px]">
+              {category}
+            </span>
+            {tags.map((tag, index) => (
+              <span key={index} className="justify-center px-2.5 py-1.5 text-indigo-600 border border-indigo-600 border-solid rounded-[80px]">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
-    </div><div className="flex flex-col justify-between text-center">
-      <a href={applyUrl} className="justify-center px-6 py-3 text-base font-bold text-white whitespace-nowrap bg-indigo-600 max-md:px-5">
-        Apply
-      </a>
-      <div className="w-[164px] h-[6px]">
-        <div
-          className="bg-blue-300 h-full"
-          style={{ width: `${Math.min(appliedCount * 10, 100)}%` }}
-        >
+      </div><div className="flex flex-col justify-between text-center">
+        <a href={applyUrl} className="justify-center px-6 py-3 text-base font-bold text-white whitespace-nowrap bg-indigo-600 max-md:px-5">
+          Apply
+        </a>
+        <div className="w-[164px] h-[6px]">
+          <div
+            className="bg-blue-300 h-full"
+            style={{ width: `${Math.min(appliedCount * 10, 100)}%` }}
+          >
+          </div>
         </div>
+        <p className="text-sm text-slate-500">
+          <span className="font-semibold text-slate-800">{appliedCount} applied</span>{" "}
+          <span className="text-slate-500">of {capacity} capacity</span>
+        </p>
       </div>
-      <p className="text-sm text-slate-500">
-        <span className="font-semibold text-slate-800">{appliedCount} applied</span>{" "}
-        <span className="text-slate-500">of {capacity} capacity</span>
-      </p>
-    </div>
-
-
-  </article>
-);
+  
+  
+    </article>
+  );
+}
 
 
 const jobListings: JobListingProps[] = [
