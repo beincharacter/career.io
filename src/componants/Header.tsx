@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
           </div>
           <div className="flex gap-4 justify-center items-start pt-6 text-base font-medium leading-6 text-slate-600">
             <NavItem path={"/find-jobs"}>Find Jobs</NavItem>
-            <NavItem path={"/browse-companies"}>Browse Companies</NavItem>
+            <NavItem path={"/find-companies"}>Browse Companies</NavItem>
           </div>
         </div>
         <div className="flex gap-4 justify-between py-3.5 pl-6 text-base font-bold leading-6 text-center">

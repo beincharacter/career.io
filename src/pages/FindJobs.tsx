@@ -66,17 +66,24 @@ const JobListing: React.FC<JobListingProps> = ({
           ))}
         </div>
       </div>
-    </div>
-    <div className="flex flex-col justify-between text-center">
+    </div><div className="flex flex-col justify-between text-center">
       <a href={applyUrl} className="justify-center px-6 py-3 text-base font-bold text-white whitespace-nowrap bg-indigo-600 max-md:px-5">
         Apply
       </a>
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/15b2c157c424782007e34bbaeba098a8101b9d33b776ee366a4c75f3ff429b65?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="self-center mt-4 aspect-[25] w-[164px]" />
-      <p className="mt-2 text-sm text-slate-500">
+      <div className="w-[164px] h-[6px]">
+        <div
+          className="bg-blue-300 h-full"
+          style={{ width: `${Math.min(appliedCount * 10, 100)}%` }}
+        >
+        </div>
+      </div>
+      <p className="text-sm text-slate-500">
         <span className="font-semibold text-slate-800">{appliedCount} applied</span>{" "}
         <span className="text-slate-500">of {capacity} capacity</span>
       </p>
     </div>
+
+
   </article>
 );
 

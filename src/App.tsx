@@ -13,6 +13,7 @@ const App: React.FC = () => {
       <Routes>
           <Route index element={<LandingPage />} />
           <Route path="/find-jobs" element={<FindJobsComponent />} />
+          <Route path='/find-companies' Component={LandingPage} />
       </Routes>
       <Footer />
     </BrowserRouter>

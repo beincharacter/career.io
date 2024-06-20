@@ -3,6 +3,8 @@ import JobSearchItem from './JobSearchItem';
 import PopularKeywords from './PopularKeywords';
 
 export const HeroHeader: React.FC = () => {
+  console.log("hero header");
+  
   return (
     <main className="flex flex-col items-start my-16 pt-4 text-base px-24 leading-6 max-md:mt-10 max-md:max-w-full">
       <header className="text-7xl font-semibold text-sky-400 leading-[79px] max-md:max-w-full max-md:text-4xl max-md:leading-[49px] w-[600px]">
