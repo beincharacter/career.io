@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import TransitionWrapper from "../componants/TransitionWrapper";
 
 interface JobListingProps {
   companyLogo: string;
@@ -288,6 +289,9 @@ const FindJobsComponent: React.FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
+    <TransitionWrapper
+      inProp={true}
+    >
     <div className="flex justify-center items-center px-16 py-20 bg-white max-md:px-5">
       <div className="w-full max-w-[1193px] max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
@@ -469,6 +473,7 @@ const FindJobsComponent: React.FC = () => {
         </div>
       </div>
     </div>
+    </TransitionWrapper>
   );
 };
 

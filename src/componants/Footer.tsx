@@ -1,4 +1,5 @@
 import * as React from "react";
+// import TransitionWrapper from "./TransitionWrapper";
 
 type SectionTitleProps = {
   title: string;
@@ -23,7 +24,11 @@ const ListItem: React.FC<ListItemProps> = ({ items }) => (
 );
 
 export const Footer: React.FC = () => {
+  // const [inProp] = React.useState(true);
   return (
+    // <TransitionWrapper
+    //   inProp={inProp}
+    // >
     <div className="flex flex-col items-center pt-16 pb-10 w-full bg-gray-800 max-md:px-5 max-md:max-w-full">
       <div className="flex flex-col w-full max-w-[1192px] max-md:max-w-full">
         <header className="flex gap-5 justify-between items-start max-md:flex-wrap max-md:max-w-full">
@@ -35,7 +40,7 @@ export const Footer: React.FC = () => {
                 className="shrink-0 w-8 aspect-square"
                 alt=""
               />
-              <div className="flex-auto">JobHuntly</div>
+              <div className="flex-auto">carrer.io</div>
             </div>
             <p className="mt-10 text-base leading-7 text-zinc-200">
               Great platform for the job seeker that passionate about startups.
@@ -82,7 +87,7 @@ export const Footer: React.FC = () => {
         </header>
         <footer className="flex gap-5 mt-32 text-base font-medium leading-6 text-white max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
           <div className="flex-auto my-auto">
-            2021 @ JobHuntly. All rights reserved.
+            2021 @ carrer.io. All rights reserved.
           </div>
           <img
             loading="lazy"
@@ -93,5 +98,6 @@ export const Footer: React.FC = () => {
         </footer>
       </div>
     </div>
+    // </TransitionWrapper>
   );
 };

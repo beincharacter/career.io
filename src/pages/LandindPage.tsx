@@ -7,21 +7,25 @@ import FeaturedJobs from '../componants/FeaturedJobs';
 import LatestJobsOpen from '../componants/LatestJobs';
 import { useLocation } from 'react-router-dom';
 import RecommendedCompanies from './RecommendedCompanies';
+import TransitionWrapper from '../componants/TransitionWrapper';
 
 
 
 
 export const LandingPage: React.FC = () => {
   const location = useLocation();
-
+  const [inProp] = React.useState(true);
   return (
-    <div className='w-full pb-20'>
-      <HeroHeader />
-      {location.pathname === '/' && <Home />}
-      {location.pathname === '/find-jobs' &&  <Home />}
-      {location.pathname === '/find-companies' &&  <RecommendedCompanies />}
-      
-    </div>
+    <TransitionWrapper
+      inProp={inProp}
+    >
+      <div className='w-full pb-20'>
+        <HeroHeader />
+        {location.pathname === '/' && <Home />}
+        {location.pathname === '/find-jobs' && <Home />}
+        {location.pathname === '/find-companies' && <RecommendedCompanies />}
+
+      </div></TransitionWrapper>
   );
 };
 
