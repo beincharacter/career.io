@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
                 className="shrink-0 w-8 aspect-square"
                 alt=""
               />
-              <div className="flex-auto">JobHuntly</div>
+              <div className="flex-auto">carrer.io</div>
             </div>
             <p className="mt-10 text-base leading-7 text-zinc-200">
               Great platform for the job seeker that passionate about startups.
@@ -87,7 +87,7 @@ export const Footer: React.FC = () => {
         </header>
         <footer className="flex gap-5 mt-32 text-base font-medium leading-6 text-white max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
           <div className="flex-auto my-auto">
-            2021 @ JobHuntly. All rights reserved.
+            2021 @ carrer.io. All rights reserved.
           </div>
           <img
             loading="lazy"

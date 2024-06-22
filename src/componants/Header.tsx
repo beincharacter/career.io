@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
                 alt=""
               />
             </Link>
-            <h1 className="flex-auto text-2xl font-bold tracking-tight leading-9 text-slate-800">JobHuntly</h1>
+            <h1 className="flex-auto text-2xl font-bold tracking-tight leading-9 text-slate-800">carrer.io</h1>
           </div>
           <div className="flex gap-4 justify-center items-start pt-6 text-base font-medium leading-6 text-slate-600">
             <NavItem path={"/find-jobs"}>Find Jobs</NavItem>
