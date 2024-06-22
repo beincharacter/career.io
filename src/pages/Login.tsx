@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PageTransitionWrapper from '../componants/PageTransitionWrapper';
+import TransitionWrapper from '../componants/TransitionWrapper';
 
 type LoginButtonProps = {
   icon: string;
@@ -44,7 +44,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <PageTransitionWrapper inProp={inProp}>
+    <TransitionWrapper inProp={inProp}>
       <div className="bg-white absolute top-0 left-0 h-screen w-screen flex justify-center items-center">
         <button onClick={handleClose} className="absolute top-4 left-4 p-2 text-gray-600 hover:text-gray-900">
           &times;
@@ -92,7 +92,7 @@ const Login: React.FC = () => {
           </div>
         </section>
       </div>
-    </PageTransitionWrapper>
+    </TransitionWrapper>
   );
 };
 

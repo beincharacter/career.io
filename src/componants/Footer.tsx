@@ -1,5 +1,5 @@
 import * as React from "react";
-import PageTransitionWrapper from "./PageTransitionWrapper";
+import TransitionWrapper from "./TransitionWrapper";
 
 type SectionTitleProps = {
   title: string;
@@ -24,9 +24,9 @@ const ListItem: React.FC<ListItemProps> = ({ items }) => (
 );
 
 export const Footer: React.FC = () => {
-  const [inProp, setInProp] = React.useState(true);
+  const [inProp] = React.useState(true);
   return (
-    <PageTransitionWrapper
+    <TransitionWrapper
       inProp={inProp}
     >
     <div className="flex flex-col items-center pt-16 pb-10 w-full bg-gray-800 max-md:px-5 max-md:max-w-full">
@@ -98,6 +98,6 @@ export const Footer: React.FC = () => {
         </footer>
       </div>
     </div>
-    </PageTransitionWrapper>
+    </TransitionWrapper>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import TransitionWrapper from '../componants/TransitionWrapper';
 
 type JobCardProps = {
   logo: string;
@@ -88,6 +89,10 @@ export const CompanyDetail: React.FC = () => {
   ];
 
   return (
+
+    <TransitionWrapper
+      inProp={true}
+    >
     <div className="flex flex-col bg-white">
       <main>
         <section className="flex flex-col pb-20 w-full bg-slate-50 max-md:max-w-full">
@@ -294,6 +299,7 @@ export const CompanyDetail: React.FC = () => {
         </section>
       </main>
     </div>
+    </TransitionWrapper>
   );
 };
 

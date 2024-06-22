@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import "../scss/Login.scss"
 
 type PageTransitionProps = {
   children: ReactNode;
