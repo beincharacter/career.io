@@ -40,13 +40,13 @@ const Login: React.FC = () => {
 
   const handleClose = () => {
     setInProp(false);
-    setTimeout(() => navigate('/'), 500); // Adjust timeout to match the CSS transition duration
+    setTimeout(() => navigate('/'), 500);
   };
 
   return (
     <TransitionWrapper inProp={inProp}>
       <div className="bg-white absolute top-0 left-0 h-screen w-screen flex justify-center items-center">
-        <button onClick={handleClose} className="absolute top-4 left-4 p-2 text-gray-600 hover:text-gray-900">
+        <button onClick={handleClose} className="absolute top-4 right-4 p-2 text-gray-600 hover:text-gray-900 text-[30px]">
           &times;
         </button>
         <section className="flex flex-col justify-center items-center ml-5 max-md:ml-0 max-md:w-full">

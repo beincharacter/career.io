@@ -1,6 +1,13 @@
 import React, { ReactNode, useRef } from 'react';
 import { Transition } from 'react-transition-group';
-// import './TransitionWrapper.scss';
+
+type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited' | 'unmounted';
+
+type TransitionStyles = {
+  [key in Exclude<TransitionStatus, 'unmounted'>]: {
+    transform: string;
+  };
+};
 
 type TransitionProps = {
   children: ReactNode;
@@ -21,13 +28,7 @@ const TransitionWrapper: React.FC<TransitionProps> = ({
   inProp,
   unmountOnExit = true,
   appear = true,
-  timeout = { enter: 300, exit: 200 },
-  onEnter,
-  onEntering,
-  onEntered,
-  onExit,
-  onExiting,
-  onExited,
+  timeout = { enter: 200, exit: 200 },
 }) => {
   const nodeRef = useRef(null);
 
@@ -36,7 +37,7 @@ const TransitionWrapper: React.FC<TransitionProps> = ({
     transform: 'translateX(100%)',
   };
 
-  const transitionStyles = {
+  const transitionStyles: TransitionStyles = {
     entering: { transform: 'translateX(0)' },
     entered: { transform: 'translateX(0)' },
     exiting: { transform: 'translateX(-100%)' },
@@ -50,19 +51,13 @@ const TransitionWrapper: React.FC<TransitionProps> = ({
       timeout={timeout}
       unmountOnExit={unmountOnExit}
       appear={appear}
-      onEnter={(isAppearing) => onEnter && onEnter(isAppearing)}
-      onEntering={(isAppearing) => onEntering && onEntering(isAppearing)}
-      onEntered={(isAppearing) => onEntered && onEntered(isAppearing)}
-      onExit={onExit}
-      onExiting={onExiting}
-      onExited={onExited}
     >
       {(state) => (
         <div
           ref={nodeRef}
           style={{
             ...defaultStyle,
-            ...transitionStyles[state],
+            ...(transitionStyles[state as Exclude<TransitionStatus, 'unmounted'>] || {}),
           }}
         >
           {children}

@@ -1,42 +1,42 @@
 import React from 'react';
 import TransitionWrapper from '../componants/TransitionWrapper';
 
-type JobCardProps = {
-  logo: string;
-  title: string;
-  company: string;
-  location: string;
-  jobType: string;
-  tags: string[];
-};
+// type JobCardProps = {
+//   logo: string;
+//   title: string;
+//   company: string;
+//   location: string;
+//   jobType: string;
+//   tags: string[];
+// };
 
-const JobCard: React.FC<JobCardProps> = ({ logo, title, company, location, jobType, tags }) => (
-  <div className="px-10 py-6 mt-4 bg-white max-md:px-5 max-md:max-w-full">
-    <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-      <div className="flex flex-col w-[19%] max-md:ml-0 max-md:w-full">
-        <img loading="lazy" src={logo} alt={`${company} logo`} className="shrink-0 w-16 aspect-square max-md:mt-10" />
-      </div>
-      <div className="flex flex-col ml-5 w-[81%] max-md:ml-0 max-md:w-full">
-        <div className="flex flex-col grow font-semibold leading-[160%] max-md:mt-10">
-          <h3 className="text-xl leading-6 text-slate-800">{title}</h3>
-          <div className="flex gap-2 justify-between py-px mt-2 text-base text-slate-600">
-            <span>{company}</span>
-            <span>{location}</span>
-          </div>
-          <div className="flex gap-2 mt-2 text-sm whitespace-nowrap">
-            <span className="justify-center px-2.5 py-1.5 text-emerald-300 bg-emerald-300 bg-opacity-10 rounded-[80px]">{jobType}</span>
-            <div className="shrink-0 w-px bg-zinc-200 h-[34px]" />
-            {tags.map((tag, index) => (
-              <span key={index} className={`justify-center px-2.5 py-1.5 text-${index % 2 === 0 ? 'amber-400' : 'indigo-600'} border border-${index % 2 === 0 ? 'amber-400' : 'indigo-600'} border-solid rounded-[80px]`}>
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+// const JobCard: React.FC<JobCardProps> = ({ logo, title, company, location, jobType, tags }) => (
+//   <div className="px-10 py-6 mt-4 bg-white max-md:px-5 max-md:max-w-full">
+//     <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+//       <div className="flex flex-col w-[19%] max-md:ml-0 max-md:w-full">
+//         <img loading="lazy" src={logo} alt={`${company} logo`} className="shrink-0 w-16 aspect-square max-md:mt-10" />
+//       </div>
+//       <div className="flex flex-col ml-5 w-[81%] max-md:ml-0 max-md:w-full">
+//         <div className="flex flex-col grow font-semibold leading-[160%] max-md:mt-10">
+//           <h3 className="text-xl leading-6 text-slate-800">{title}</h3>
+//           <div className="flex gap-2 justify-between py-px mt-2 text-base text-slate-600">
+//             <span>{company}</span>
+//             <span>{location}</span>
+//           </div>
+//           <div className="flex gap-2 mt-2 text-sm whitespace-nowrap">
+//             <span className="justify-center px-2.5 py-1.5 text-emerald-300 bg-emerald-300 bg-opacity-10 rounded-[80px]">{jobType}</span>
+//             <div className="shrink-0 w-px bg-zinc-200 h-[34px]" />
+//             {tags.map((tag, index) => (
+//               <span key={index} className={`justify-center px-2.5 py-1.5 text-${index % 2 === 0 ? 'amber-400' : 'indigo-600'} border border-${index % 2 === 0 ? 'amber-400' : 'indigo-600'} border-solid rounded-[80px]`}>
+//                 {tag}
+//               </span>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// );
 
 type TeamMemberProps = {
   image: string;
