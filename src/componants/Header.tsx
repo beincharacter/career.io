@@ -26,8 +26,11 @@ export const Header: React.FC = () => {
           </div>
         </div>
         <div className="flex gap-4 justify-between py-3.5 pl-6 text-base font-bold leading-6 text-center">
-          <a href="/login" className="my-auto text-indigo-600">Login</a>
-          <a href="/signup" className="justify-center px-6 py-3 text-white bg-indigo-600 max-md:px-5">Sign Up</a>
+          <button
+            onClick={() => navigate("/auth/login")}
+            className="my-auto text-indigo-600"
+          >Login</button>
+          <button className="justify-center px-6 py-3 text-white bg-indigo-600 max-md:px-5">Sign Up</button>
         </div>
       </nav>
     </header>
