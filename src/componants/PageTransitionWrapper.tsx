@@ -1,17 +1,20 @@
 import React, { ReactNode } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import "../scss/Login.scss"
 
 type PageTransitionProps = {
   children: ReactNode;
+  inProp: boolean;
+  unmountOnExit?: boolean;
 };
 
-export const PageTransitionWrapper: React.FC<PageTransitionProps> = ({ children }) => {
+const PageTransitionWrapper: React.FC<PageTransitionProps> = ({ children, inProp, unmountOnExit = true }) => {
   return (
     <CSSTransition
-      in={true}
-      timeout={300}
+      in={inProp}
+      timeout={500} // Adjust timeout as per your CSS transition duration
       classNames="page-transition"
-      unmountOnExit
+      unmountOnExit={unmountOnExit}
     >
       <div className="page-container">
         {children}
@@ -20,3 +23,4 @@ export const PageTransitionWrapper: React.FC<PageTransitionProps> = ({ children 
   );
 };
 
+export default PageTransitionWrapper;
