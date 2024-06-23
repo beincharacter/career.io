@@ -8,6 +8,7 @@ import FindJobsComponent from './pages/FindJobs';
 import JobDetailComponent from './pages/JobDetail';
 import { CompanyDetail } from './pages/CompanyDetail';
 import Login from './pages/Login';
+import Signup from './pages/SignUp';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
       <Routes>
           <Route index element={<LandingPage />} />
           <Route path='/auth/login' element={<Login />} />
+          <Route path='/auth/signup' element={<Signup />} />
           <Route path="/find-jobs" element={<FindJobsComponent />} />
           <Route path='/find-companies' Component={LandingPage} />
           <Route path='/find-jobs/job-123456' Component={JobDetailComponent} />

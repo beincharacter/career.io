@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TransitionWrapper from '../componants/TransitionWrapper';
+import { auth, provider, signInWithPopup } from '../Firebase';
 
-type LoginButtonProps = {
+type SignupButtonProps = {
   icon: string;
   text: string;
 };
 
-const LoginButton: React.FC<LoginButtonProps> = ({ icon, text }) => (
-  <button className="flex justify-center items-center px-4 py-3 w-full font-bold text-center text-indigo-600 border border-indigo-200 border-solid leading-[160%]">
-    <div className="flex gap-2.5">
-      <img loading="lazy" src={icon} alt="" className="shrink-0 my-auto w-5 aspect-square" />
-      <span>{text}</span>
-    </div>
-  </button>
-);
+// const SignupButton: React.FC<SignupButtonProps> = ({ icon, text }) => (
+//   <button className="flex justify-center items-center px-4 py-3 w-full font-bold text-center text-indigo-600 border border-indigo-200 border-solid leading-[160%]">
+//     <div className="flex gap-2.5">
+//       <img loading="lazy" src={icon} alt="" className="shrink-0 my-auto w-5 aspect-square" />
+//       <span>{text}</span>
+//     </div>
+//   </button>
+// );
 
 type InputFieldProps = {
   label: string;
@@ -33,7 +34,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, placeholder, type = 'tex
   </div>
 );
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   const [role, setRole] = useState<'jobSeeker' | 'company'>('jobSeeker');
   const [inProp, setInProp] = useState(true);
   const navigate = useNavigate();
@@ -41,6 +42,18 @@ const Login: React.FC = () => {
   const handleClose = () => {
     setInProp(false);
     setTimeout(() => navigate('/'), 500);
+  };
+
+
+  const Register = async () => {
+    try {
+      console.log("inside register");
+      const result = await signInWithPopup(auth, provider);
+      console.log({ result });
+
+    } catch (error) {
+      console.error("Error logging in with Google: ", error);
+    }
   };
 
   return (
@@ -65,29 +78,38 @@ const Login: React.FC = () => {
                 Company
               </button>
             </nav>
-            <h2 className="self-center mt-6 text-3xl font-semibold leading-10 text-center text-gray-800">
-              Welcome Back, {role === 'jobSeeker' ? 'Job Seeker' : 'Company'}
-            </h2>
-            <LoginButton icon="https://cdn.builder.io/api/v1/image/assets/TEMP/658919a91bc4a1aeac93a88e3d5d8b4e8b0b1fbdeb08bcd4217797c2acfd7964?apiKey=946bf3455d5f470191c249fabc019131&" text="Login with Google" />
+            {/* <SignupButton icon="https://cdn.builder.io/api/v1/image/assets/TEMP/658919a91bc4a1aeac93a88e3d5d8b4e8b0b1fbdeb08bcd4217797c2acfd7964?apiKey=946bf3455d5f470191c249fabc019131&" text="Sign Up with Google" /> */}
+
+
+            <button className="flex justify-center items-center px-4 py-3 w-full font-bold text-center text-indigo-600 border border-indigo-200 border-solid leading-[160%]"
+              onClick={Register}
+            >
+              <div className="flex gap-2.5">
+                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/658919a91bc4a1aeac93a88e3d5d8b4e8b0b1fbdeb08bcd4217797c2acfd7964?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="shrink-0 my-auto w-5 aspect-square" />
+                <span>Sign Up with Google</span>
+              </div>
+            </button>
+
             <div className="flex gap-5 items-center py-1.5 mt-6 text-center text-gray-800 leading-[160%] max-md:flex-wrap">
               <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[109px]" />
-              <div className="flex-auto self-stretch">Or login with email</div>
+              <div className="flex-auto self-stretch">Or sign up with email</div>
               <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[184px]" />
             </div>
             <form>
               <InputField label="Email Address" placeholder="Enter email address" type="email" />
               <InputField label="Password" placeholder="Enter password" type="password" />
+              <InputField label="Confirm Password" placeholder="Confirm password" type="password" />
               <label className="flex gap-4 items-center mt-6 leading-[160%] text-slate-600">
                 <input type="checkbox" className="w-6 h-6 border-2 border-indigo-600 border-solid" />
-                <span>Remember me</span>
+                <span>I agree to the terms and conditions</span>
               </label>
               <button type="submit" className="w-full px-6 py-3 mt-6 font-bold text-center text-white whitespace-nowrap bg-indigo-600 leading-[160%]">
-                Login
+                Sign Up
               </button>
             </form>
             <p className="flex gap-2 mt-6 max-md:flex-wrap">
-              <span className="text-gray-800 leading-[160%]">Don't have an account?</span>
-              <button onClick={() => navigate("/auth/signup")} className="font-semibold text-center text-indigo-600 leading-[150%]">Sign Up</button>
+              <span className="text-gray-800 leading-[160%]">Already have an account?</span>
+              <button className="font-semibold text-center text-indigo-600 leading-[150%]">Login</button>
             </p>
           </div>
         </section>
@@ -96,4 +118,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Signup;

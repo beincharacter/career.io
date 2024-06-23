@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type CompanyCardProps = {
   logo: string;
@@ -8,27 +9,33 @@ type CompanyCardProps = {
   tags: string[];
 };
 
-const CompanyCard: React.FC<CompanyCardProps> = ({ logo, jobCount, name, description, tags }) => (
-  <article className="flex flex-col grow p-6 mx-auto w-full bg-white border border-solid border-zinc-200 leading-[160%] max-md:px-5 max-md:mt-8">
-    <header className="flex gap-5 justify-between text-base text-indigo-600">
-      <img loading="lazy" src={logo} alt={`${name} logo`} className="shrink-0 aspect-square w-[88px]" />
-      <span className="justify-center self-start px-3 py-1 bg-slate-50">{jobCount} Jobs</span>
-    </header>
-    <h2 className="mt-4 text-2xl font-semibold leading-7 text-slate-800">{name}</h2>
-    <p className="mt-4 text-lg leading-7 text-slate-600">{description}</p>
-    <div className="flex gap-4 mt-4 text-sm font-semibold">
-      {tags.map((tag, index) => (
-        <span key={index} className={`justify-center px-2.5 py-1.5 rounded-[80px] ${
-          tag === 'Business Service' ? 'text-amber-400 border border-amber-400 border-solid' :
-          tag === 'Technology' ? 'text-red-400 bg-red-400 bg-opacity-10' :
-          'text-indigo-600 bg-indigo-600 bg-opacity-10'
-        }`}>
-          {tag}
-        </span>
-      ))}
-    </div>
-  </article>
-);
+const CompanyCard: React.FC<CompanyCardProps> = ({ logo, jobCount, name, description, tags }) => {
+  const navigate = useNavigate();
+
+  return (
+    <article className="flex flex-col grow p-6 mx-auto w-full bg-white border border-solid border-zinc-200 leading-[160%] max-md:px-5 max-md:mt-8"
+      onClick={() => navigate("/company") }
+    >
+      <header className="flex gap-5 justify-between text-base text-indigo-600">
+        <img loading="lazy" src={logo} alt={`${name} logo`} className="shrink-0 aspect-square w-[88px]" />
+        <span className="justify-center self-start px-3 py-1 bg-slate-50">{jobCount} Jobs</span>
+      </header>
+      <h2 className="mt-4 text-2xl font-semibold leading-7 text-slate-800">{name}</h2>
+      <p className="mt-4 text-lg leading-7 text-slate-600">{description}</p>
+      <div className="flex gap-4 mt-4 text-sm font-semibold">
+        {tags.map((tag, index) => (
+          <span key={index} className={`justify-center px-2.5 py-1.5 rounded-[80px] ${
+            tag === 'Business Service' ? 'text-amber-400 border border-amber-400 border-solid' :
+            tag === 'Technology' ? 'text-red-400 bg-red-400 bg-opacity-10' :
+            'text-indigo-600 bg-indigo-600 bg-opacity-10'
+          }`}>
+            {tag}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
 
 const companyData: CompanyCardProps[] = [
   {
