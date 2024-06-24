@@ -137,9 +137,9 @@ const Signup: React.FC = () => {
               <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[184px]" />
             </div>
             <form onSubmit={handleRegister}>
-              <InputField label="Name" placeholder="Enter your name" name="name" value={userData.name} onChange={handleInputChange} />
-              <InputField label="Email Address" placeholder="Enter email address" type="email" name="email" value={userData.email} onChange={handleInputChange} />
-              <InputField label="Password" placeholder="Enter password" type="password" name="password" value={userData.password} onChange={handleInputChange} />
+              <InputField label="Name" placeholder="Enter your name" value={userData.name} onChange={handleInputChange} />
+              <InputField label="Email Address" placeholder="Enter email address" type="email" value={userData.email} onChange={handleInputChange} />
+              <InputField label="Password" placeholder="Enter password" type="password" value={userData.password} onChange={handleInputChange} />
               <InputField label="Confirm Password" placeholder="Confirm password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
               <label className="flex gap-4 items-center mt-6 leading-[160%] text-slate-600">
                 <input type="checkbox" className="w-6 h-6 border-2 border-indigo-600 border-solid" />
