@@ -79,7 +79,7 @@ const Dashboard: React.FC = () => {
           <nav className="flex flex-col grow justify-between self-stretch py-8 mx-auto w-full shadow-sm bg-slate-50 leading-[160%]">
             <div className="flex gap-2 mx-6 text-2xl font-bold tracking-tight leading-9 text-gray-800 whitespace-nowrap max-md:mx-2.5">
               <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f5ff2ad732c35c9d5325d7cff8af6b6126bdd9e147a1f9d27e48cd612c2d4d53?apiKey=9930d1395d354fadb15c776dbd7b25f4&" alt="" className="shrink-0 my-auto w-8 aspect-square" />
-              <h1>JobHuntly</h1>
+              <h1>carrer.io</h1>
             </div>
             <ul>
               <SidebarItem icon="https://cdn.builder.io/api/v1/image/assets/TEMP/13bda64b2764e7fd0f210e18620dbfa648f35bfe478ceba6ebddd17e66f760c4?apiKey=9930d1395d354fadb15c776dbd7b25f4&" text="Dashboard" isActive={true} />

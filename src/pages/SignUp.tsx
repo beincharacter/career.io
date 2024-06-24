@@ -3,39 +3,48 @@ import { useNavigate } from 'react-router-dom';
 import TransitionWrapper from '../componants/TransitionWrapper';
 import { auth, provider, signInWithPopup } from '../Firebase';
 
-type SignupButtonProps = {
-  icon: string;
-  text: string;
-};
-
-// const SignupButton: React.FC<SignupButtonProps> = ({ icon, text }) => (
-//   <button className="flex justify-center items-center px-4 py-3 w-full font-bold text-center text-indigo-600 border border-indigo-200 border-solid leading-[160%]">
-//     <div className="flex gap-2.5">
-//       <img loading="lazy" src={icon} alt="" className="shrink-0 my-auto w-5 aspect-square" />
-//       <span>{text}</span>
-//     </div>
-//   </button>
-// );
+type UserData = {
+  email: string;
+  password: string;
+  login_type: 'manual' | 'google';
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  user_type: 'organisation' | 'candidate';
+}
 
 type InputFieldProps = {
   label: string;
   placeholder: string;
   type?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const InputField: React.FC<InputFieldProps> = ({ label, placeholder, type = 'text' }) => (
+const InputField: React.FC<InputFieldProps> = ({ label, placeholder, type = 'text', value, onChange }) => (
   <div className="mb-6">
     <label className="block mb-1 font-semibold leading-[160%] text-slate-600">{label}</label>
     <input
       type={type}
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
       className="w-full px-4 py-3 text-gray-400 bg-white border border-solid border-zinc-200 leading-[160%]"
     />
   </div>
 );
 
 const Signup: React.FC = () => {
-  const [role, setRole] = useState<'jobSeeker' | 'company'>('jobSeeker');
+  const [userData, setUserData] = useState<UserData>({
+    email: '',
+    password: '',
+    login_type: 'manual',
+    createdAt: '',
+    updatedAt: '',
+    name: '',
+    user_type: 'candidate'
+  });
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [inProp, setInProp] = useState(true);
   const navigate = useNavigate();
 
@@ -44,13 +53,47 @@ const Signup: React.FC = () => {
     setTimeout(() => navigate('/'), 500);
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserData(prev => ({ ...prev, [name]: value }));
+  };
 
-  const Register = async () => {
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (userData.password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+    
+    const now = new Date().toISOString();
+    const finalUserData = {
+      ...userData,
+      createdAt: now,
+      updatedAt: now
+    };
+
+    console.log("Registering user:", finalUserData);
+    // Here you would typically send this data to your backend or Firebase
+    // For now, we'll just log it and navigate
+    navigate("/dashboard/organization");
+  };
+
+  const handleGoogleSignUp = async () => {
     try {
-      console.log("inside register");
       const result = await signInWithPopup(auth, provider);
-      console.log({ result });
-      navigate("/dashboard/organization")
+      const now = new Date().toISOString();
+      const googleUserData: UserData = {
+        email: result.user.email || '',
+        password: '',
+        login_type: 'google',
+        createdAt: now,
+        updatedAt: now,
+        name: result.user.displayName || '',
+        user_type: userData.user_type
+      };
+      console.log("Google Sign Up:", googleUserData);
+      // Here you would typically send this data to your backend
+      navigate("/dashboard/organization");
     } catch (error) {
       console.error("Error logging in with Google: ", error);
     }
@@ -66,23 +109,21 @@ const Signup: React.FC = () => {
           <div className="flex flex-col self-stretch px-5 my-auto text-base max-md:mt-10 max-md:max-w-full">
             <nav className="flex gap-0 justify-center self-center font-semibold text-indigo-600 leading-[160%]">
               <button
-                className={`justify-center px-3 py-2 ${role === 'jobSeeker' ? 'bg-violet-100' : 'bg-white'}`}
-                onClick={() => setRole('jobSeeker')}
+                className={`justify-center px-3 py-2 ${userData.user_type === 'candidate' ? 'bg-violet-100' : 'bg-white'}`}
+                onClick={() => setUserData(prev => ({ ...prev, user_type: 'candidate' }))}
               >
                 Job Seeker
               </button>
               <button
-                className={`justify-center px-3 py-2 whitespace-nowrap ${role === 'company' ? 'bg-violet-100' : 'bg-white'}`}
-                onClick={() => setRole('company')}
+                className={`justify-center px-3 py-2 whitespace-nowrap ${userData.user_type === 'organisation' ? 'bg-violet-100' : 'bg-white'}`}
+                onClick={() => setUserData(prev => ({ ...prev, user_type: 'organisation' }))}
               >
                 Company
               </button>
             </nav>
-            {/* <SignupButton icon="https://cdn.builder.io/api/v1/image/assets/TEMP/658919a91bc4a1aeac93a88e3d5d8b4e8b0b1fbdeb08bcd4217797c2acfd7964?apiKey=946bf3455d5f470191c249fabc019131&" text="Sign Up with Google" /> */}
-
 
             <button className="flex justify-center items-center px-4 py-3 w-full font-bold text-center text-indigo-600 border border-indigo-200 border-solid leading-[160%]"
-              onClick={Register}
+              onClick={handleGoogleSignUp}
             >
               <div className="flex gap-2.5">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/658919a91bc4a1aeac93a88e3d5d8b4e8b0b1fbdeb08bcd4217797c2acfd7964?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="shrink-0 my-auto w-5 aspect-square" />
@@ -95,10 +136,11 @@ const Signup: React.FC = () => {
               <div className="flex-auto self-stretch">Or sign up with email</div>
               <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[184px]" />
             </div>
-            <form>
-              <InputField label="Email Address" placeholder="Enter email address" type="email" />
-              <InputField label="Password" placeholder="Enter password" type="password" />
-              <InputField label="Confirm Password" placeholder="Confirm password" type="password" />
+            <form onSubmit={handleRegister}>
+              <InputField label="Name" placeholder="Enter your name" name="name" value={userData.name} onChange={handleInputChange} />
+              <InputField label="Email Address" placeholder="Enter email address" type="email" name="email" value={userData.email} onChange={handleInputChange} />
+              <InputField label="Password" placeholder="Enter password" type="password" name="password" value={userData.password} onChange={handleInputChange} />
+              <InputField label="Confirm Password" placeholder="Confirm password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
               <label className="flex gap-4 items-center mt-6 leading-[160%] text-slate-600">
                 <input type="checkbox" className="w-6 h-6 border-2 border-indigo-600 border-solid" />
                 <span>I agree to the terms and conditions</span>
