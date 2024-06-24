@@ -50,7 +50,7 @@ const Signup: React.FC = () => {
       console.log("inside register");
       const result = await signInWithPopup(auth, provider);
       console.log({ result });
-
+      navigate("/dashboard/organization")
     } catch (error) {
       console.error("Error logging in with Google: ", error);
     }
