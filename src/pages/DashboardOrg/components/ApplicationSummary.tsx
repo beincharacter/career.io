@@ -15,11 +15,11 @@ export const ApplicantsSummary: React.FC<ApplicantsSummaryProps> = ({ total, cat
                 <div className="text-7xl font-semibold leading-[72px] text-slate-800 max-md:text-4xl">{total}</div>
                 <div className="self-end mt-6 text-xl leading-8 text-slate-500">Applicants</div>
             </div>
-            <div className="flex gap-0 justify-center px-6 max-md:px-5">
+            {/* <div className="flex gap-0 justify-center px-6 max-md:px-5">
                 {categories.map((category, index) => (
                     <div key={index} className={`shrink-0 h-4 bg-${category.color}`} style={{ width: `${(category.count / total) * 100}%` }} />
                 ))}
-            </div>
+            </div> */}
             <div className="flex gap-5 justify-between px-6 text-base leading-6 text-slate-800 max-md:px-5">
                 <div className="flex flex-col pt-6">
                     {categories.slice(0, 3).map((category, index) => (
