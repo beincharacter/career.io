@@ -27,6 +27,10 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  
+  if (isPending) {
+    console.log('Transition is pending...');
+  }
 
   const toggleMenu = () => {
     startTransition(() => {

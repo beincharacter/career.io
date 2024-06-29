@@ -5,28 +5,19 @@
 }
 
 #root {
-  /* padding-left: 8rem;
-  padding-right: 8rem; */
   width: 100%;
 }
 
-@media (max-width: 767px) {
-  #root {
-    /* padding-left: 1.25rem;
-    padding-right: 1.25rem; */
-  }
-}
 
 .sticky {
   position: sticky;
-  top: 20px; /* Adjust this value as needed */
+  top: 20px; 
 }
 
 
 
 .hover {
   --c: #1095c1;
-  /* the color */
   --s: .15em;
 
   line-height: 1.1em;
