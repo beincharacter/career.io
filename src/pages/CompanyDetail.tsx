@@ -1,43 +1,6 @@
 import React from 'react';
 import TransitionWrapper from '../componants/TransitionWrapper';
 
-// type JobCardProps = {
-//   logo: string;
-//   title: string;
-//   company: string;
-//   location: string;
-//   jobType: string;
-//   tags: string[];
-// };
-
-// const JobCard: React.FC<JobCardProps> = ({ logo, title, company, location, jobType, tags }) => (
-//   <div className="px-10 py-6 mt-4 bg-white max-md:px-5 max-md:max-w-full">
-//     <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-//       <div className="flex flex-col w-[19%] max-md:ml-0 max-md:w-full">
-//         <img loading="lazy" src={logo} alt={`${company} logo`} className="shrink-0 w-16 aspect-square max-md:mt-10" />
-//       </div>
-//       <div className="flex flex-col ml-5 w-[81%] max-md:ml-0 max-md:w-full">
-//         <div className="flex flex-col grow font-semibold leading-[160%] max-md:mt-10">
-//           <h3 className="text-xl leading-6 text-slate-800">{title}</h3>
-//           <div className="flex gap-2 justify-between py-px mt-2 text-base text-slate-600">
-//             <span>{company}</span>
-//             <span>{location}</span>
-//           </div>
-//           <div className="flex gap-2 mt-2 text-sm whitespace-nowrap">
-//             <span className="justify-center px-2.5 py-1.5 text-emerald-300 bg-emerald-300 bg-opacity-10 rounded-[80px]">{jobType}</span>
-//             <div className="shrink-0 w-px bg-zinc-200 h-[34px]" />
-//             {tags.map((tag, index) => (
-//               <span key={index} className={`justify-center px-2.5 py-1.5 text-${index % 2 === 0 ? 'amber-400' : 'indigo-600'} border border-${index % 2 === 0 ? 'amber-400' : 'indigo-600'} border-solid rounded-[80px]`}>
-//                 {tag}
-//               </span>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// );
-
 type TeamMemberProps = {
   image: string;
   name: string;
@@ -95,67 +58,93 @@ export const CompanyDetail: React.FC = () => {
     >
     <div className="flex flex-col bg-white">
       <main>
-        <section className="flex flex-col pb-20 w-full bg-slate-50 max-md:max-w-full">
-          <div className="flex flex-col self-center mt-11 w-full max-w-[999px] max-md:mt-10 max-md:max-w-full">
-            <nav className="text-base leading-6 text-slate-800 max-md:max-w-full">
-              <span className="text-slate-500">Home / Companies / </span>Nomad
-            </nav>
-            <div className="mt-12 max-md:mt-10 max-md:max-w-full">
-              <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                <div className="flex flex-col w-[19%] max-md:ml-0 max-md:w-full">
-                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9f6ea01f18f0db44f713756ea67d0012ffb6df819c476deb9adedd96ac50ba59?apiKey=946bf3455d5f470191c249fabc019131&" alt="Stripe logo" className="shrink-0 max-w-full aspect-square w-[189px] max-md:mt-6" />
+      <section className="flex flex-col w-full bg-slate-50 px-4">
+  <div className="flex flex-col self-center w-full max-w-[999px] md:mt-10">
+    <nav className="text-base leading-6 text-slate-800">
+      <span className="text-slate-500">Home / Companies / </span>Nomad
+    </nav>
+    <div className="">
+      <div className="flex flex-col md:flex-row gap-5">
+        <div className="flex flex-col w-full md:w-[19%]">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/9f6ea01f18f0db44f713756ea67d0012ffb6df819c476deb9adedd96ac50ba59?apiKey=946bf3455d5f470191c249fabc019131&"
+            alt="Stripe logo"
+            className="shrink-0 self-center md:self-start w-40 md:w-[189px] aspect-square mt-6 md:mt-0"
+          />
+        </div>
+        <div className="flex flex-col w-full md:w-[81%] mt-9 md:mt-0">
+          <div className="flex flex-col items-start">
+            <div className="flex gap-3 items-center">
+              <h2 className="text-4xl md:text-5xl font-semibold text-slate-800">Stripe</h2>
+              <div className="justify-center px-3 py-1 text-base leading-6 text-center text-indigo-600 border border-indigo-600">43 Jobs</div>
+            </div>
+            <a href="https://stripe.com" className="mt-3 text-base font-semibold leading-6 text-indigo-600">https://stripe.com</a>
+            <div className="flex flex-wrap gap-5 mt-6">
+              <div className="flex gap-4 items-center">
+                <div className="flex justify-center items-center p-2.5 w-11 h-11 bg-white rounded-full">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/a74f0865b1e8a0476abce2073ceccbadd361a64511a430b1f09884cc7e8b0bc3?apiKey=946bf3455d5f470191c249fabc019131&"
+                    alt=""
+                    className="w-6 aspect-square"
+                  />
                 </div>
-                <div className="flex flex-col ml-5 w-[81%] max-md:ml-0 max-md:w-full">
-                  <div className="flex flex-col items-start self-stretch my-auto max-md:mt-9 max-md:max-w-full">
-                    <div className="flex gap-3">
-                      <h2 className="text-5xl font-semibold leading-[52.8px] text-slate-800 max-md:text-4xl">Stripe</h2>
-                      <div className="justify-center px-3 py-1 my-auto text-base leading-6 text-center text-indigo-600 border border-indigo-600 border-solid">43 Jobs</div>
-                    </div>
-                    <a href="https://stripe.com" className="mt-3 text-base font-semibold leading-6 text-indigo-600">https://stripe.com</a>
-                    <div className="flex gap-5 justify-between self-stretch mt-6 max-md:flex-wrap">
-                      <div className="flex gap-4">
-                        <div className="flex justify-center items-center p-2.5 my-auto w-11 h-11 bg-white rounded-[50px]">
-                          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a74f0865b1e8a0476abce2073ceccbadd361a64511a430b1f09884cc7e8b0bc3?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="w-6 aspect-square" />
-                        </div>
-                        <div className="flex flex-col text-base leading-6">
-                          <div className="text-slate-600">Founded</div>
-                          <div className="font-semibold text-slate-800">July 31, 2011</div>
-                        </div>
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="flex justify-center items-center p-2.5 my-auto w-11 h-11 bg-white rounded-[50px]">
-                          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/fdb3057de9ae7f2270edc999b1710752f4c173f0d79f39524a597ec47c1edfa6?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="w-6 aspect-square" />
-                        </div>
-                        <div className="flex flex-col text-base leading-6 whitespace-nowrap">
-                          <div className="text-slate-600">Employees</div>
-                          <div className="font-semibold text-slate-800">4000+</div>
-                        </div>
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="flex justify-center items-center p-2.5 my-auto w-11 h-11 bg-white rounded-[50px]">
-                          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/63e17c9becfeb1e95f13ad6037d26d2864566d21e479b48681fc75d0ca295977?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="w-6 aspect-square" />
-                        </div>
-                        <div className="flex flex-col text-base leading-6">
-                          <div className="text-slate-600">Location</div>
-                          <div className="font-semibold text-slate-800">20 countries</div>
-                        </div>
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="flex justify-center items-center p-2.5 my-auto w-11 h-11 bg-white rounded-[50px]">
-                          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/91fa92b67357b67caa5b7d4cf141009c844efab93be2ab3a427c7ceac8b2ad6c?apiKey=946bf3455d5f470191c249fabc019131&" alt="" className="w-6 aspect-square" />
-                        </div>
-                        <div className="flex flex-col text-base leading-6">
-                          <div className="text-slate-600">Industry</div>
-                          <div className="font-semibold text-slate-800">Payment Gateway</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="flex flex-col text-base leading-6">
+                  <div className="text-slate-600">Founded</div>
+                  <div className="font-semibold text-slate-800">July 31, 2011</div>
+                </div>
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="flex justify-center items-center p-2.5 w-11 h-11 bg-white rounded-full">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/fdb3057de9ae7f2270edc999b1710752f4c173f0d79f39524a597ec47c1edfa6?apiKey=946bf3455d5f470191c249fabc019131&"
+                    alt=""
+                    className="w-6 aspect-square"
+                  />
+                </div>
+                <div className="flex flex-col text-base leading-6">
+                  <div className="text-slate-600">Employees</div>
+                  <div className="font-semibold text-slate-800">4000+</div>
+                </div>
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="flex justify-center items-center p-2.5 w-11 h-11 bg-white rounded-full">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/63e17c9becfeb1e95f13ad6037d26d2864566d21e479b48681fc75d0ca295977?apiKey=946bf3455d5f470191c249fabc019131&"
+                    alt=""
+                    className="w-6 aspect-square"
+                  />
+                </div>
+                <div className="flex flex-col text-base leading-6">
+                  <div className="text-slate-600">Location</div>
+                  <div className="font-semibold text-slate-800">20 countries</div>
+                </div>
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="flex justify-center items-center p-2.5 w-11 h-11 bg-white rounded-full">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/91fa92b67357b67caa5b7d4cf141009c844efab93be2ab3a427c7ceac8b2ad6c?apiKey=946bf3455d5f470191c249fabc019131&"
+                    alt=""
+                    className="w-6 aspect-square"
+                  />
+                </div>
+                <div className="flex flex-col text-base leading-6">
+                  <div className="text-slate-600">Industry</div>
+                  <div className="font-semibold text-slate-800">Payment Gateway</div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
         <section className="flex justify-center items-center px-16 py-20 w-full bg-white max-md:px-5 max-md:max-w-full">
           <div className="w-full max-w-[1192px] max-md:max-w-full">
             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
