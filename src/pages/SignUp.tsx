@@ -107,7 +107,7 @@ const Signup: React.FC = () => {
         </button>
         <section className="flex flex-col justify-center items-center ml-5 max-md:ml-0 max-md:w-full">
           <div className="flex flex-col self-stretch px-5 my-auto text-base max-md:mt-10 max-md:max-w-full">
-            <nav className="flex gap-0 justify-center self-center font-semibold text-indigo-600 leading-[160%]">
+            <nav className="flex gap-0 justify-center self-center font-semibold text-indigo-600 leading-[160%] pb-4">
               <button
                 className={`justify-center px-3 py-2 ${userData.user_type === 'candidate' ? 'bg-violet-100' : 'bg-white'}`}
                 onClick={() => setUserData(prev => ({ ...prev, user_type: 'candidate' }))}
@@ -131,10 +131,8 @@ const Signup: React.FC = () => {
               </div>
             </button>
 
-            <div className="flex gap-5 items-center py-1.5 mt-6 text-center text-gray-800 leading-[160%] max-md:flex-wrap">
-              <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[109px]" />
-              <div className="flex-auto self-stretch">Or sign up with email</div>
-              <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[184px]" />
+            <div className="flex items-center py-1.5 mt-6 text-center text-gray-800 leading-[160%] max-md:flex-wrap">
+              <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-black border-black w-full" />
             </div>
             <form onSubmit={handleRegister}>
               <InputField label="Name" placeholder="Enter your name" value={userData.name} onChange={handleInputChange} />
@@ -151,7 +149,7 @@ const Signup: React.FC = () => {
             </form>
             <p className="flex gap-2 mt-6 max-md:flex-wrap">
               <span className="text-gray-800 leading-[160%]">Already have an account?</span>
-              <button className="font-semibold text-center text-indigo-600 leading-[150%]">Login</button>
+              <button className="font-semibold text-center text-indigo-600 leading-[150%]" onClick={() => navigate("/auth/login")}>Login</button>
             </p>
           </div>
         </section>

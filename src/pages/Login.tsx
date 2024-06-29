@@ -51,7 +51,7 @@ const Login: React.FC = () => {
         </button>
         <section className="flex flex-col justify-center items-center ml-5 max-md:ml-0 max-md:w-full">
           <div className="flex flex-col self-stretch px-5 my-auto text-base max-md:mt-10 max-md:max-w-full">
-            <nav className="flex gap-0 justify-center self-center font-semibold text-indigo-600 leading-[160%]">
+            <nav className="flex gap-0 justify-center self-center pb-4 font-semibold text-indigo-600 leading-[160%]">
               <button
                 className={`justify-center px-3 py-2 ${role === 'jobSeeker' ? 'bg-violet-100' : 'bg-white'}`}
                 onClick={() => setRole('jobSeeker')}
@@ -65,14 +65,10 @@ const Login: React.FC = () => {
                 Company
               </button>
             </nav>
-            <h2 className="self-center mt-6 text-3xl font-semibold leading-10 text-center text-gray-800">
-              Welcome Back, {role === 'jobSeeker' ? 'Job Seeker' : 'Company'}
-            </h2>
             <LoginButton icon="https://cdn.builder.io/api/v1/image/assets/TEMP/658919a91bc4a1aeac93a88e3d5d8b4e8b0b1fbdeb08bcd4217797c2acfd7964?apiKey=946bf3455d5f470191c249fabc019131&" text="Login with Google" />
-            <div className="flex gap-5 items-center py-1.5 mt-6 text-center text-gray-800 leading-[160%] max-md:flex-wrap">
-              <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[109px]" />
-              <div className="flex-auto self-stretch">Or login with email</div>
-              <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-zinc-200 border-zinc-200 w-[184px]" />
+
+            <div className="flex items-center py-1.5 mt-6 text-center text-gray-800 leading-[160%] max-md:flex-wrap">
+              <div className="shrink-0 self-stretch my-auto h-px border border-solid bg-black border-black w-full" />
             </div>
             <form>
               <InputField label="Email Address" placeholder="Enter email address" type="email" />
