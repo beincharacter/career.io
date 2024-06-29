@@ -1,6 +1,6 @@
 import React from 'react';
 import "./App.css";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Header } from './componants/Header';
 import { LandingPage } from './pages/LandindPage';
 import { Footer } from './componants/Footer';
@@ -8,23 +8,29 @@ import FindJobsComponent from './pages/FindJobs';
 import JobDetailComponent from './pages/JobDetail';
 import { CompanyDetail } from './pages/CompanyDetail';
 import Login from './pages/Login';
+import Signup from './pages/SignUp';
+import Dashboard from './pages/DashboardOrg/OrgDashboard';
 
 const App: React.FC = () => {
+  const location = useLocation();
+  const authRoutes = ['/auth/login', '/auth/signup'];
+  const hideHeaderFooter = authRoutes.includes(location.pathname) || location.pathname.startsWith('/dashboard/organization');
+
   return (
-    <BrowserRouter>
-      <Header />
+    <>
+      {!hideHeaderFooter && <Header />}
       <Routes>
-          <Route index element={<LandingPage />} />
-          <Route path='/auth/login' element={<Login />} />
-          <Route path="/find-jobs" element={<FindJobsComponent />} />
-          <Route path='/find-companies' Component={LandingPage} />
-          <Route path='/find-jobs/job-123456' Component={JobDetailComponent} />
-          <Route path='/company' Component={CompanyDetail} />
+        <Route index element={<LandingPage />} />
+        <Route path='/auth/login' element={<Login />} />
+        <Route path='/auth/signup' element={<Signup />} />
+        <Route path="/find-jobs" element={<FindJobsComponent />} />
+        <Route path='/find-companies' element={<LandingPage />} />
+        <Route path='/find-jobs/job-123456' element={<JobDetailComponent />} />
+        <Route path='/company' element={<CompanyDetail />} />
+        <Route path='/dashboard/organization/*' element={<Dashboard />} />
       </Routes>
-      <Footer />
-    </BrowserRouter>
+      {!hideHeaderFooter && <Footer />}
+    </>
   );
 };
-
-
 export default App;

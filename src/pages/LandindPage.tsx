@@ -25,7 +25,8 @@ export const LandingPage: React.FC = () => {
         {location.pathname === '/find-jobs' && <Home />}
         {location.pathname === '/find-companies' && <RecommendedCompanies />}
 
-      </div></TransitionWrapper>
+      </div>
+    </TransitionWrapper>
   );
 };
 
