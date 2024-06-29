@@ -39,7 +39,7 @@ export const MessagesArea: React.FC = () => {
                 </aside>
                 <main className="flex flex-col ml-5 w-[64%] max-md:ml-0 max-md:w-full">
                     <div className="flex flex-col grow self-stretch pb-7 max-md:max-w-full">
-                        <header className="justify-between px-8 pt-7 pb-6 bg-white shadow-sm max-md:px-5 max-md:max-w-full">
+                        <header className="justify-between px-8 pt-7 pb-6 bg-white shadow-sm max-md:px-5 max-md:max-w-full border border-gray-300">
                             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                                 <div className="flex flex-col w-[61%] max-md:ml-0 max-md:w-full">
                                     <div className="flex grow gap-4 justify-center max-md:mt-10">
