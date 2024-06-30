@@ -1,3 +1,5 @@
+import { JobProps } from "../utils/Types";
+
 const jobListings = [
   {
     companyLogo: "https://cdn.builder.io/api/v1/image/assets/TEMP/280e55916444ac0942e065bcbb64491fe3c4686333e9c11993846f3574cd5d1e?apiKey=946bf3455d5f470191c249fabc019131&",
@@ -169,5 +171,56 @@ const jobListings = [
   },
 ];
 
+const jobsData: JobProps[] = [
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/00df84a556bc62cffdc84c6a7e466c0ac0365cf2cec3200ebcbed12318e0aa9c?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Social Media Assistant",
+      company: "Nomad",
+      location: "Paris, France",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/ef3459f1f96f876f6e499823813e18b6a8827e6d912469a0a2bee9137d811970?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Brand Designer",
+      company: "Dropbox",
+      location: "San Fransisco, USA",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/5a08c02b9b9d482dfe5363751a8dbf733fcc3393b299899e206760f182484c1e?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Interactive Developer",
+      company: "Terraform",
+      location: "Hamburg, Germany",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/15ed45ceed55c4a64b945fb0dce03c635ff6c9f71ac13a9704ffe8cfa6375ad6?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "HR Manager",
+      company: "Packer",
+      location: "Lucern, Switzerland",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/3957a51487401c52e7a419c5bfa66794280de1679258d1c6aacef342973fb21b?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Social Media Assistant",
+      company: "Netlify",
+      location: "Paris, France",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/5db8b45555abaa06f06b647b64a4f825e7a73c6913785916cd3effca74ceb4d9?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Brand Designer",
+      company: "Maze",
+      location: "San Fransisco, USA",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/fe906a5c2847e1badb4ca32859986fc2e4b5fdaef4b0a50b51ba4192b35d3d24?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Interactive Developer",
+      company: "Udacity",
+      location: "Hamburg, Germany",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/c943e7321d8fac7f865bfada6e52e266db38d5ae81972d82de3db379cc13e3c0?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "HR Manager",
+      company: "Webflow",
+      location: "Lucern, Switzerland",
+  },
+];
 
-export {jobListings}
+
+export {jobListings, jobsData}

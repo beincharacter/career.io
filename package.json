@@ -1,7 +1,7 @@
 {
   "name": "jobhunt",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "homepage": "https://beincharacter.github.io/career.io",
   "scripts": {
