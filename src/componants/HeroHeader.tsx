@@ -19,7 +19,7 @@ export const HeroHeader: React.FC = () => {
       <p className="mt-4 md:mt-6 text-base md:text-lg leading-7 md:leading-8 text-slate-600">
         Great platform for the job seeker that searching for new career heights and passionate about startups.
       </p>
-      <form className="flex flex-col md:flex-row gap-4 md:gap-0 justify-center items-stretch md:items-center p-4 mt-6 bg-white shadow-2xl w-full max-w-[600px]">
+      <form className="flex flex-col md:flex-row gap-4 md:gap-0 justify-center items-stretch md:items-center p-4 mt-6 bg-white shadow-2xl w-full sm:w-max">
         <JobSearchItem
           iconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6f7d2d193db6251ea4757715e35a2f044527b213a4c7437134260b59ad135df2?apiKey=946bf3455d5f470191c249fabc019131&"
           description="Job title or keyword"

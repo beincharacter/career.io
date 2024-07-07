@@ -1,4 +1,4 @@
-import { JobProps } from "../utils/Types";
+import { JobProps, MessageProps } from "../utils/Types";
 
 const jobListings = [
   {
@@ -223,4 +223,17 @@ const jobsData: JobProps[] = [
 ];
 
 
-export {jobListings, jobsData}
+const messages: MessageProps[] = [
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/16a89d36d4315c3da3e41e0dd5be3ea94c375c676813d2e492f8778e2357ce62?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Jan Mayer", time: "12 mins ago", message: "We want to invite you for a qui..."},
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/c4a6c336fa9696161a5be4789ac86492048c1d631da67314f9c76bc6d582d93f?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Joe Bartmann", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/ac6ade2b0b602652a9647471ab58d2e4390fa73b189df8360bf2b5c453af621d?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Ally Wales", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/f81875e08a98e98e280a72bcd32234891a1903a80d34ebe953afaf06a27b1ef2?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "James Gardner", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/f750f43511198d8567e10c3ecd4a2daee99aaf7020a01fdd07af02c3521b9d49?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Allison Geidt", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/114446315d0bd9ed78f88dd647c32d41ed2b95f291dfd5816a35a7669487e995?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Ruben Culhane", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/50cf2feed63b1b1b5381eb3986ad1afc35b9aa58e952e4d0e239844929ee924f?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Lydia Diaz", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/cf07260f9df17042541ea51e46ea254301a037686599cb1f30c8e19060948754?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "James Dokidis", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/5379c8da0be6f0b91688c32cf1d06cb9c9153ac3f3c6a948ddc2111b8b2effe1?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Angelina Swann", time: "3:40 PM", message: "Hey thanks for your interview..." },
+];
+
+
+export {jobListings, jobsData, messages}

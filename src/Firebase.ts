@@ -3,7 +3,6 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-console.log(import.meta.env.VITE_FIREBASE_API_KEY, "asdfghjkl");
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

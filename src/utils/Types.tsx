@@ -4,3 +4,11 @@ export interface JobProps {
     company: string;
     location: string;
 }
+
+export type MessageProps = {
+    avatar: string;
+    name: string;
+    time: string;
+    message: string;
+    isSelected?: boolean;
+};
