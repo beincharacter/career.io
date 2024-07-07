@@ -29,6 +29,12 @@ const TransitionWrapper: React.FC<TransitionProps> = ({
   unmountOnExit = true,
   appear = true,
   timeout = { enter: 200, exit: 200 },
+  onEnter,
+  onEntering,
+  onEntered,
+  onExit,
+  onExiting,
+  onExited,
 }) => {
   const nodeRef = useRef(null);
 
@@ -51,6 +57,12 @@ const TransitionWrapper: React.FC<TransitionProps> = ({
       timeout={timeout}
       unmountOnExit={unmountOnExit}
       appear={appear}
+      onEnter={onEnter}
+      onEntering={onEntering}
+      onEntered={onEntered}
+      onExit={onExit}
+      onExiting={onExiting}
+      onExited={onExited}
     >
       {(state) => (
         <div

@@ -1,3 +1,5 @@
+import { JobProps, MessageProps } from "../utils/Types";
+
 const jobListings = [
   {
     companyLogo: "https://cdn.builder.io/api/v1/image/assets/TEMP/280e55916444ac0942e065bcbb64491fe3c4686333e9c11993846f3574cd5d1e?apiKey=946bf3455d5f470191c249fabc019131&",
@@ -169,5 +171,69 @@ const jobListings = [
   },
 ];
 
+const jobsData: JobProps[] = [
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/00df84a556bc62cffdc84c6a7e466c0ac0365cf2cec3200ebcbed12318e0aa9c?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Social Media Assistant",
+      company: "Nomad",
+      location: "Paris, France",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/ef3459f1f96f876f6e499823813e18b6a8827e6d912469a0a2bee9137d811970?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Brand Designer",
+      company: "Dropbox",
+      location: "San Fransisco, USA",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/5a08c02b9b9d482dfe5363751a8dbf733fcc3393b299899e206760f182484c1e?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Interactive Developer",
+      company: "Terraform",
+      location: "Hamburg, Germany",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/15ed45ceed55c4a64b945fb0dce03c635ff6c9f71ac13a9704ffe8cfa6375ad6?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "HR Manager",
+      company: "Packer",
+      location: "Lucern, Switzerland",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/3957a51487401c52e7a419c5bfa66794280de1679258d1c6aacef342973fb21b?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Social Media Assistant",
+      company: "Netlify",
+      location: "Paris, France",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/5db8b45555abaa06f06b647b64a4f825e7a73c6913785916cd3effca74ceb4d9?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Brand Designer",
+      company: "Maze",
+      location: "San Fransisco, USA",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/fe906a5c2847e1badb4ca32859986fc2e4b5fdaef4b0a50b51ba4192b35d3d24?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "Interactive Developer",
+      company: "Udacity",
+      location: "Hamburg, Germany",
+  },
+  {
+      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/c943e7321d8fac7f865bfada6e52e266db38d5ae81972d82de3db379cc13e3c0?apiKey=946bf3455d5f470191c249fabc019131&",
+      title: "HR Manager",
+      company: "Webflow",
+      location: "Lucern, Switzerland",
+  },
+];
 
-export {jobListings}
+
+const messages: MessageProps[] = [
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/16a89d36d4315c3da3e41e0dd5be3ea94c375c676813d2e492f8778e2357ce62?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Jan Mayer", time: "12 mins ago", message: "We want to invite you for a qui..."},
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/c4a6c336fa9696161a5be4789ac86492048c1d631da67314f9c76bc6d582d93f?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Joe Bartmann", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/ac6ade2b0b602652a9647471ab58d2e4390fa73b189df8360bf2b5c453af621d?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Ally Wales", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/f81875e08a98e98e280a72bcd32234891a1903a80d34ebe953afaf06a27b1ef2?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "James Gardner", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/f750f43511198d8567e10c3ecd4a2daee99aaf7020a01fdd07af02c3521b9d49?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Allison Geidt", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/114446315d0bd9ed78f88dd647c32d41ed2b95f291dfd5816a35a7669487e995?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Ruben Culhane", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/50cf2feed63b1b1b5381eb3986ad1afc35b9aa58e952e4d0e239844929ee924f?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Lydia Diaz", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/cf07260f9df17042541ea51e46ea254301a037686599cb1f30c8e19060948754?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "James Dokidis", time: "3:40 PM", message: "Hey thanks for your interview..." },
+  { avatar: "https://cdn.builder.io/api/v1/image/assets/TEMP/5379c8da0be6f0b91688c32cf1d06cb9c9153ac3f3c6a948ddc2111b8b2effe1?apiKey=9930d1395d354fadb15c776dbd7b25f4&", name: "Angelina Swann", time: "3:40 PM", message: "Hey thanks for your interview..." },
+];
+
+
+export {jobListings, jobsData, messages}
